@@ -1,13 +1,16 @@
-﻿namespace Task6
+﻿using System;
+using System.Linq;
+
+namespace Task6
 {
     public class Program
     {
-        public static Tuple<int, int> Task6(long[] studentsHeights)
+        public static Tuple<int, int> Task6(int n, long[] studentsHeights)
         {
             int i = -1, j = -1;
             long iValue = 0;
             bool isPossible = true;
-            for (int index = 0; index < studentsHeights.Length; index++)
+            for (int index = 0; index < n; index++)
             {
                 // Если на i-ом месте все правильно, то двигаемся дальше
                 if (studentsHeights[index] % 2 == (index + 1) % 2)
@@ -40,7 +43,7 @@
             if (i == -1 || j == -1 || i == j || !isPossible)
             {
                 // Если последовательность правильная и ее длина больше 3-ех, то выводим 1 и 3
-                if (i == -1 && studentsHeights.Length >= 3)
+                if (i == -1 && n >= 3)
                 {
                     i = 1;
                     j = 3;
@@ -60,12 +63,10 @@
 
         static void Main(string[] args)
         {
-            while (true)
-            {
-                var input = GetNumericalInput();
-                var result = Task6(input);
-                Console.WriteLine(result.Item1.ToString() + " " + result.Item2.ToString());
-            }
+            var n = int.Parse(Console.ReadLine());
+            var input = GetNumericalInput();
+            var result = Task6(n, input);
+            Console.WriteLine(result.Item1.ToString() + " " + result.Item2.ToString());
         }
     }
 }
