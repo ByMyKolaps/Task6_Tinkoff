@@ -27,7 +27,7 @@ namespace Task6_Tests
         [TestCase(new long[] { 2, 1, 2, 2 }, -1, -1)]
         public void Task6_Tests(long[] longs, int expectedI, int expectedJ)
         {
-            var actual = Program.Task6(longs);
+            var actual = Program.Task6(longs.Length, longs);
             Assert.That(expectedI, Is.EqualTo(actual.Item1));
             Assert.That(expectedJ, Is.EqualTo(actual.Item2));
         }
